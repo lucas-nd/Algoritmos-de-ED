@@ -14,6 +14,11 @@ void listaEncadeada::imprimir(){
 
 void listaEncadeada::adicionar(int dado){
     struct No * novo = new (nothrow) No;
+    if(novo == NULL){
+        cout << "Falha na alocação de memória!";
+        return;
+    }
+
     novo->prox = head;
     novo->valor = dado;
     head = novo;
@@ -38,6 +43,11 @@ int listaEncadeada::buscar(int dado){
 
 void listaEncadeada::remover(int dado){
     struct No * c = head;
+    if(c->valor == dado){
+        head = c->prox;
+        delete c;
+        return;
+    }
     for(int i = 0; i <= tamanho() - 1; i++){
         struct No * aux = c->prox;
         if(aux->valor == dado){
@@ -50,15 +60,11 @@ void listaEncadeada::remover(int dado){
 }
 
 void listaEncadeada::destruir(){
-    struct No * aux = head;
-
-    head = NULL;
-
-    for(struct No *i = aux; i != NULL; i = i->prox){
+    for(struct No *i = head; i != NULL; i = i->prox){
         continue;
         delete i;
     }
-    
+    head = NULL;
 }
 
 struct No * listaEncadeada::buscarNo(int dado){
@@ -117,7 +123,13 @@ void listaEncadeada::removerNum(int n){
 }
 
 void listaEncadeada::removerAll(int dado){
-    for(struct No *i = head; i != NULL; i = i->prox){
-            remover(dado);
+    struct No * c = head;
+    for(int i = 0; i <= tamanho() - 1; i++){
+        struct No * aux = c->prox;
+        if(aux->valor == dado){
+            c->prox = aux->prox;
+            delete aux;
+        }
+        c = c->prox;
     }
 }

@@ -7,10 +7,10 @@ struct No{
 };
 
 class listaEncadeada{
+    private:
+        struct No * head;
 
     public:
-            struct No * head;
-
         listaEncadeada();
         void imprimir();
         void adicionar(int dado);

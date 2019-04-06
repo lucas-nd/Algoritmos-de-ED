@@ -21,6 +21,6 @@ int main(){
     cout << endl;
     
     lista.concatenar(lista2);
-    lista.remover(4);
+    lista.remover(3);
     lista.imprimir();
 }
