@@ -77,6 +77,14 @@ void deque::print_reverse(){
     }
 }
 
+void deque::destrutor(){
+    inicio = 0;
+    fim = (0 - 1 + capacidade) % capacidade;
+    capacidade = 0;
+    delete[] v;
+    size = 0;
+}
+
 void deque::teste(){
     cout << v[inicio] << " " << inicio << endl;
     cout << v[fim] << " " << fim << endl;

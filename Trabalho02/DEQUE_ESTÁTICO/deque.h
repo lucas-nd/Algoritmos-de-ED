@@ -21,6 +21,7 @@ class deque{
         void print();
         void print_reverse();
         void teste();
+        void destrutor();
 };
 
 #endif
