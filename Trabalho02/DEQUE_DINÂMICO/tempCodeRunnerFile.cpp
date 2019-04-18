@@ -1,0 +1,1 @@
+d.insert_ini(9);
