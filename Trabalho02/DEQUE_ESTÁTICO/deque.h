@@ -7,6 +7,7 @@ class deque{
         int fim;
         int *v;
         int capacidade;
+        int size;
     
     public:
         deque(int capacidade);

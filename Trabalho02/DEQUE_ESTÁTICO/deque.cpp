@@ -5,41 +5,43 @@ using namespace std;
 
 deque::deque(int tam_max){
     inicio = 0;
-    fim = 0;
+    fim = (0 - 1 + tam_max) % tam_max;
     capacidade = tam_max;
     v = new int[tam_max];
+    size = 0;
 }
 
 void deque::insert_ini(int dado){
-    if(fim + 1 == capacidade){
+    if(size == capacidade){
         cout << "Está cheio!";
     }else{
-        fim++;
-        for(int i = fim; i != 0; i--){
-            v[i] = v[i - 1];
-        }
+        inicio = (inicio - 1 + capacidade) % capacidade;
         v[inicio] = dado;
+        size++;
     }
 }
 
 void deque::insert_end(int dado){
-    if(fim + 1 == capacidade){
+    if(size == capacidade){
         cout << "Está cheio!";
     }else{
-        fim++;
+        fim = (fim + 1) % capacidade;
         v[fim] = dado;
+        size++;
     }
 }
 
 int deque::remove_ini(){
     int aux = v[inicio];
-    inicio++;
+    inicio = (inicio + 1 + capacidade) % capacidade;
+    size--;
     return aux;
 }
 
 int deque::remove_end(){
     int aux = v[fim];
-    fim--;
+    fim = (fim - 1 + capacidade) % capacidade;
+    size--;
     return aux;
 }
 
@@ -48,11 +50,11 @@ int deque::head(){
 }
 
 int deque::tail(){
-    return v[fim - 1];
+    return v[fim];
 }
 
 bool deque::itsEmpty(){
-    if(inicio == fim){
+    if(size == 0){
         return true;
     }else{
         return false;
@@ -60,17 +62,23 @@ bool deque::itsEmpty(){
 }
 
 void deque::print(){
-    for(int i = inicio; i != fim; i++){
-        cout << v[i] << " ";
+    int aux = inicio;
+    for(int i = 1; i <= size; i++){
+        cout << v[aux] << " ";
+        aux = (aux + 1 + capacidade) % capacidade;
     }
 }
 
 void deque::print_reverse(){
-    for(int i = fim - 1; i >= inicio; i--){
-        cout << v[i] << " ";
+    int aux = fim;
+    for(int i = 1; i <= size; i++){
+        cout << v[aux] << " ";
+        aux = (aux - 1 + capacidade) % capacidade;
     }
 }
 
 void deque::teste(){
-    cout << v[inicio] << " " << v[fim];
+    cout << v[inicio] << " " << inicio << endl;
+    cout << v[fim] << " " << fim << endl;
+    cout << v[1];
 }
