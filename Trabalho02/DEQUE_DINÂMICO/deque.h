@@ -15,8 +15,8 @@ class deque{
     public:
         deque();
         ~deque();
-        void insert_ini(int dado);
-        void insert_end(int dado);
+        void insert_ini(int data);
+        void insert_end(int data);
         int _head();
         int _tail();
         bool itsEmpty();

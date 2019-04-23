@@ -3,54 +3,54 @@
 
 using namespace std;
 
-deque::deque(int tam_max){
-    inicio = 0;
-    fim = (0 - 1 + tam_max) % tam_max;
-    capacidade = tam_max;
-    v = new int[tam_max];
+deque::deque(int capacity_max){
+    start = 0;
+    end = (0 - 1 + capacity_max) % capacity_max; // O primeiro valor que end vai receber é o índice em que será guardado a primeira inserção no inicio, já que a função -- insert_ini -- não manipula o atributo end e o atributo end será sempre igual até que seja inserido algum valor no final ou retirado.
+    capacity = capacity_max;
+    vector = new int[capacity_max];
     size = 0;
 }
 
-void deque::insert_ini(int dado){
-    if(size == capacidade){
-        cout << "Está cheio!";
+void deque::insert_ini(int data){
+    if(size == capacity){
+        cout << "O deque está cheio!" << endl;
     }else{
-        inicio = (inicio - 1 + capacidade) % capacidade;
-        v[inicio] = dado;
+        start = (start - 1 + capacity) % capacity;
+        vector[start] = data;
         size++;
     }
 }
 
-void deque::insert_end(int dado){
-    if(size == capacidade){
-        cout << "Está cheio!";
+void deque::insert_end(int data){
+    if(size == capacity){
+        cout << "O deque está cheio!" << endl;
     }else{
-        fim = (fim + 1) % capacidade;
-        v[fim] = dado;
+        end = (end + 1) % capacity;
+        vector[end] = data;
         size++;
     }
 }
 
 int deque::remove_ini(){
-    int aux = v[inicio];
-    inicio = (inicio + 1 + capacidade) % capacidade;
+    int aux = vector[start];
+    start = (start + 1 + capacity) % capacity; // Faz o start virar o indice anterior ao indice inicial
     size--;
     return aux;
 }
 
 int deque::remove_end(){
-    int aux = v[fim];
-    fim = (fim - 1 + capacidade) % capacidade;
+    int aux = vector[end];
+    end = (end - 1 + capacity) % capacity; // Faz o end virar o indice anterior ao indice final
     size--;
     return aux;
 }
 
 int deque::head(){
-    return v[inicio];
+    return vector[start];
 }
 
 int deque::tail(){
-    return v[fim];
+    return vector[end];
 }
 
 bool deque::itsEmpty(){
@@ -62,31 +62,35 @@ bool deque::itsEmpty(){
 }
 
 void deque::print(){
-    int aux = inicio;
+    if(size == 0){
+        cout << "Não tem nada para ser exibido!";
+        return;
+    }
+
+    int aux = start;
     for(int i = 1; i <= size; i++){
-        cout << v[aux] << " ";
-        aux = (aux + 1 + capacidade) % capacidade;
+        cout << vector[aux] << " ";
+        aux = (aux + 1 + capacity) % capacity;
     }
 }
 
 void deque::print_reverse(){
-    int aux = fim;
+    if(size == 0){
+        cout << "Não tem nada para ser exibido!";
+        return;
+    }
+
+    int aux = end;
     for(int i = 1; i <= size; i++){
-        cout << v[aux] << " ";
-        aux = (aux - 1 + capacidade) % capacidade;
+        cout << vector[aux] << " ";
+        aux = (aux - 1 + capacity) % capacity;
     }
 }
 
 void deque::destrutor(){
-    inicio = 0;
-    fim = (0 - 1 + capacidade) % capacidade;
-    capacidade = 0;
-    delete[] v;
+    start = 0;
+    end = (0 - 1 + capacity) % capacity;
+    capacity = 0;
+    delete[] vector;
     size = 0;
-}
-
-void deque::teste(){
-    cout << v[inicio] << " " << inicio << endl;
-    cout << v[fim] << " " << fim << endl;
-    cout << v[1];
 }

@@ -9,43 +9,44 @@ deque::deque(){
 }
 
 deque::~deque(){
-    while(head != NULL){
-        struct No * aux = head;
-        head = head->prox;
-        delete aux;
+    int control = 1;
+    while(control == 1){
+        if(head == NULL){
+            control = 0;
+        }else{
+            remove_ini();
+        }
     }
-
-    tail = NULL;
 }
 
-void deque::insert_ini(int dado){
+void deque::insert_ini(int data){
     struct No * novo = new struct No;
 
-    if(head == NULL){
+    if(head == NULL){ // Inserção do primeiro elemento do DEQUE e atualiza os valores dos ponteiros
         head = novo;
         tail = novo;
         novo->prox = novo;
         novo->ant = novo;
-        novo->valor = dado;
-    }else{
+        novo->valor = data;
+    }else{ // Inserção de um elemento no DEQUE e atualiza os ponteiros
         novo->prox = head;
         novo->ant = tail;
         head->ant = novo;
         tail->prox = novo;
         head = novo;
-        novo->valor = dado;
+        novo->valor = data;
     }
 }
 
-void deque::insert_end(int dado){
+void deque::insert_end(int data){
     struct No * novo = new struct No;
 
-    if(head == NULL){
+    if(head == NULL){ // Inserção do primeiro elemento no DEQUE
         head = novo;
         tail = novo;
         novo->prox = novo;
         novo->ant = novo;
-        novo->valor = dado;
+        novo->valor = data;
     }else{
         struct No * aux = head->ant;
 
@@ -53,7 +54,7 @@ void deque::insert_end(int dado){
         novo->prox = head;
         head->ant = novo;
         aux->prox = novo;
-        novo->valor = dado;
+        novo->valor = data;
         tail = novo;
     }
 }
@@ -77,6 +78,11 @@ bool deque::itsEmpty(){
 void deque::print(){
     struct No * i = head;
 
+    if(i == NULL){
+        cout << "Não tem nada para ser exibido!";
+        return;
+    }
+
     do{
         cout << i->valor << " ";
         i = i->prox;
@@ -85,6 +91,11 @@ void deque::print(){
 
 void deque::print_reverse(){
     struct No * i = tail;
+
+    if(i == NULL){
+        cout << "Não tem nada para ser exibido!";
+        return;
+    }
 
     do{
         cout << i->valor << " ";
@@ -96,10 +107,16 @@ int deque::remove_ini(){
     struct No * aux = head;
     int resultado = aux->valor;
 
-    head->ant->prox = head->prox;
-    head->prox = head->ant->prox;
-    head = head->prox;
-
+    if(aux->prox == head){ // atualiza o valor dos ponteiros caso só exista 1 nó
+        head = NULL;
+        tail = NULL;
+    }else{ // atualiza o valor dos ponteiros
+        head->ant->prox = head->prox;
+        head->ant->ant = head->ant->ant->ant;
+        head->prox = head->ant->prox;
+        head = head->prox;
+    }
+    
     delete aux;
     return resultado;
 }
@@ -108,18 +125,16 @@ int deque::remove_end(){
     struct No * aux = tail;
     int resultado = aux->valor;
 
-    tail->ant->prox = tail->prox;
-    tail->prox = tail->ant->prox;
-    tail = tail->prox;
+    if(aux->ant == tail){ // atualiza o valor dos ponteiros caso só exista 1 nó
+        head = NULL;
+        tail = NULL;
+    }else{ // atualiza o valor dos ponteiros
+        tail->ant->prox = tail->prox;
+        tail->ant->ant = tail->ant->ant->ant;
+        tail->prox = tail->ant->prox;
+        tail = tail->prox;
+    }
 
     delete aux;
     return resultado;
-}
-
-void deque::teste(){
-    cout << tail->valor << " ";
-    cout << tail->ant->valor << " ";
-    struct No* aux = tail->ant;
-    cout << aux->ant << " ";
-    cout << tail->ant;
 }

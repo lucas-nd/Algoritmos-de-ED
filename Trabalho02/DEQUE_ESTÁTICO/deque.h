@@ -3,16 +3,16 @@
 
 class deque{
     private:
-        int inicio;
-        int fim;
-        int *v;
-        int capacidade;
+        int start;
+        int end;
+        int *vector;
+        int capacity;
         int size;
     
     public:
-        deque(int capacidade);
-        void insert_ini(int dado);
-        void insert_end(int dado);
+        deque(int capacity_max);
+        void insert_ini(int data);
+        void insert_end(int data);
         int remove_ini();
         int remove_end();
         int head();
@@ -20,7 +20,6 @@ class deque{
         bool itsEmpty();
         void print();
         void print_reverse();
-        void teste();
         void destrutor();
 };
 
