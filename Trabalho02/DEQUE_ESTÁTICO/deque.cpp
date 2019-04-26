@@ -1,13 +1,28 @@
+/*
+    Nome: Lucas do Nascimento Diniz
+    Matrícula: 418184
+    GitHub: https://github.com/LNascimentoD/Algoritmos-de-ED/commits/master
+        **Os códigos estão todos no GitHub, caso o professor queira avaliar outros aspectos**
+*/
+
 #include <iostream>
 #include "deque.h"
 
 using namespace std;
 
 deque::deque(int capacity_max){
+    vector = new (nothrow) int[capacity_max];
+
+    if(vector == NULL){
+        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
+        cout << "-               Erro em alocar a memória                  -" << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        exit(1);
+    }
+
     start = 0;
     end = (0 - 1 + capacity_max) % capacity_max; // O primeiro valor que end vai receber é o índice em que será guardado a primeira inserção no inicio, já que a função -- insert_ini -- não manipula o atributo end e o atributo end será sempre igual até que seja inserido algum valor no final ou retirado.
     capacity = capacity_max;
-    vector = new int[capacity_max];
     size = 0;
 }
 
@@ -32,25 +47,53 @@ void deque::insert_end(int data){
 }
 
 int deque::remove_ini(){
-    int aux = vector[start];
-    start = (start + 1 + capacity) % capacity; // Faz o start virar o indice anterior ao indice inicial
-    size--;
-    return aux;
+    if(size == 0){
+        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
+        cout << "-                  O DEQUE está vazio                     -" << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        return -99999;
+    }else{
+        int aux = vector[start];
+        start = (start + 1 + capacity) % capacity; // Faz o start virar o indice anterior ao indice inicial
+        size--;
+        return aux;
+    }
 }
 
 int deque::remove_end(){
-    int aux = vector[end];
-    end = (end - 1 + capacity) % capacity; // Faz o end virar o indice anterior ao indice final
-    size--;
-    return aux;
+    if(itsEmpty()){
+        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
+        cout << "-                  O DEQUE está vazio                     -" << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        return -99999;
+    }else{
+        int aux = vector[end];
+        end = (end - 1 + capacity) % capacity; // Faz o end virar o indice anterior ao indice final
+        size--;
+        return aux;
+    }
 }
 
 int deque::head(){
-    return vector[start];
+    if(itsEmpty()){
+        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
+        cout << "-                  O DEQUE está vazio                     -" << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        return -99999;
+    }else{
+        return vector[start];
+    }
 }
 
 int deque::tail(){
-    return vector[end];
+    if(itsEmpty()){
+        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
+        cout << "-                  O DEQUE está vazio                     -" << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        return -99999;
+    }else{
+        return vector[end];
+    }
 }
 
 bool deque::itsEmpty(){
@@ -62,28 +105,28 @@ bool deque::itsEmpty(){
 }
 
 void deque::print(){
-    if(size == 0){
+    if(itsEmpty()){
         cout << "Não tem nada para ser exibido!";
         return;
-    }
-
-    int aux = start;
-    for(int i = 1; i <= size; i++){
-        cout << vector[aux] << " ";
-        aux = (aux + 1 + capacity) % capacity;
+    }else{
+        int aux = start;
+        for(int i = 1; i <= size; i++){
+            cout << vector[aux] << " ";
+            aux = (aux + 1 + capacity) % capacity;
+        }
     }
 }
 
 void deque::print_reverse(){
-    if(size == 0){
+    if(itsEmpty()){
         cout << "Não tem nada para ser exibido!";
         return;
-    }
-
-    int aux = end;
-    for(int i = 1; i <= size; i++){
-        cout << vector[aux] << " ";
-        aux = (aux - 1 + capacity) % capacity;
+    }else{
+        int aux = end;
+        for(int i = 1; i <= size; i++){
+            cout << vector[aux] << " ";
+            aux = (aux - 1 + capacity) % capacity;
+        }
     }
 }
 

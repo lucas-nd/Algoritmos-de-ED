@@ -1,3 +1,10 @@
+/*
+    Nome: Lucas do Nascimento Diniz
+    Matrícula: 418184
+    GitHub: https://github.com/LNascimentoD/Algoritmos-de-ED/commits/master
+        **Os códigos estão todos no GitHub, caso o professor queira avaliar outros aspectos**
+*/
+
 #include <iostream>
 #include "deque.cpp" // Caso for compilar o algoritmo através de uma IDE use -- #include "deque.cpp" --, caso contrário mude para -- #include "deque.h" --
 

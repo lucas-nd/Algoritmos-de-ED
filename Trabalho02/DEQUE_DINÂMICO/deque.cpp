@@ -1,3 +1,10 @@
+/*
+    Nome: Lucas do Nascimento Diniz
+    Matrícula: 418184
+    GitHub: https://github.com/LNascimentoD/Algoritmos-de-ED/commits/master
+        **Os códigos estão todos no GitHub, caso o professor queira avaliar outros aspectos**
+*/
+
 #include <iostream>
 #include "deque.h"
 
@@ -20,7 +27,14 @@ deque::~deque(){
 }
 
 void deque::insert_ini(int data){
-    struct No * novo = new struct No;
+    struct No * novo = new (nothrow) struct No;
+
+    if(novo == NULL){
+        cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+        cout << "-               Erro em alocar a memória                  -" << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        exit(1);
+    }
 
     if(head == NULL){ // Inserção do primeiro elemento do DEQUE e atualiza os valores dos ponteiros
         head = novo;
@@ -39,15 +53,22 @@ void deque::insert_ini(int data){
 }
 
 void deque::insert_end(int data){
-    struct No * novo = new struct No;
+    struct No * novo = new (nothrow) struct No;
 
-    if(head == NULL){ // Inserção do primeiro elemento no DEQUE
+    if(novo == NULL){
+        cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+        cout << "-               Erro em alocar a memória                  -" << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        exit(1);
+    }
+
+    if(head == NULL){ // Inserção do primeiro elemento no DEQUE e atualiza os valores dos ponteiros
         head = novo;
         tail = novo;
         novo->prox = novo;
         novo->ant = novo;
         novo->valor = data;
-    }else{
+    }else{ // Inserção de um elemento no DEQUE e atualiza os ponteiros
         struct No * aux = head->ant;
 
         novo->ant = head->ant;
@@ -76,7 +97,7 @@ bool deque::itsEmpty(){
 }
 
 void deque::print(){
-    struct No * i = head;
+    struct No * i = head; // i é um ponteiro auxiliar para ser usado majoritariamente no while, por ser necessário quase que exclusivamente no while optei por chamar de i já que é comum usar com esse nome em laços de repetição
 
     if(i == NULL){
         cout << "Não tem nada para ser exibido!";
@@ -90,7 +111,7 @@ void deque::print(){
 }
 
 void deque::print_reverse(){
-    struct No * i = tail;
+    struct No * i = tail; // i é um ponteiro auxiliar para ser usado majoritariamente no while, por ser necessário quase que exclusivamente no while optei por chamar de i já que é comum usar com esse nome em laços de repetição
 
     if(i == NULL){
         cout << "Não tem nada para ser exibido!";
@@ -105,36 +126,34 @@ void deque::print_reverse(){
 
 int deque::remove_ini(){
     struct No * aux = head;
-    int resultado = aux->valor;
+    int result = aux->valor;
 
     if(aux->prox == head){ // atualiza o valor dos ponteiros caso só exista 1 nó
         head = NULL;
         tail = NULL;
     }else{ // atualiza o valor dos ponteiros
-        head->ant->prox = head->prox;
-        head->ant->ant = head->ant->ant->ant;
-        head->prox = head->ant->prox;
+        tail->prox = head->prox;
+        head->prox->ant = head->ant;
         head = head->prox;
     }
     
-    delete aux;
-    return resultado;
+    delete aux; // Desaloca a memoria que é apontada por aux
+    return result;
 }
 
 int deque::remove_end(){
     struct No * aux = tail;
-    int resultado = aux->valor;
+    int result = aux->valor;
 
     if(aux->ant == tail){ // atualiza o valor dos ponteiros caso só exista 1 nó
         head = NULL;
         tail = NULL;
     }else{ // atualiza o valor dos ponteiros
+        head->ant = tail->ant;
         tail->ant->prox = tail->prox;
-        tail->ant->ant = tail->ant->ant->ant;
-        tail->prox = tail->ant->prox;
-        tail = tail->prox;
+        tail = tail->ant;
     }
 
-    delete aux;
-    return resultado;
+    delete aux; // Desaloca a memoria que é apontada por aux
+    return result;
 }

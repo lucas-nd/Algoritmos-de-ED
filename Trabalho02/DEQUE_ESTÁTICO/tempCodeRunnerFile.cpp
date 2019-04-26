@@ -1,1 +1,1 @@
-d.insert_end(9);
+d.remove_ini()

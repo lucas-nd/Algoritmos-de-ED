@@ -1,0 +1,6 @@
+    Nome: Lucas do Nascimento Diniz
+    Matrícula: 418184
+    GitHub: https://github.com/LNascimentoD/Algoritmos-de-ED/commits/master
+        **Os códigos estão todos no GitHub, caso o professor queira avaliar outros aspectos**
+	
+	**Quando eu compilo os códigos usando o Visual Studio Code é necessário substituir o - #include "deque.h" - por - #include "deque.cpp" - no arquivo main.cpp**

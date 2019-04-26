@@ -1,3 +1,10 @@
+/*
+    Nome: Lucas do Nascimento Diniz
+    Matrícula: 418184
+    GitHub: https://github.com/LNascimentoD/Algoritmos-de-ED/commits/master
+        **Os códigos estão todos no GitHub, caso o professor queira avaliar outros aspectos**
+*/
+
 #ifndef DEQUE_H
 #define DEQUE_H
 
