@@ -47,53 +47,25 @@ void deque::insert_end(int data){
 }
 
 int deque::remove_ini(){
-    if(size == 0){
-        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
-        cout << "-                  O DEQUE está vazio                     -" << endl;
-        cout << "-----------------------------------------------------------" << endl;
-        return -99999;
-    }else{
         int aux = vector[start];
         start = (start + 1 + capacity) % capacity; // Faz o start virar o indice anterior ao indice inicial
         size--;
         return aux;
-    }
 }
 
 int deque::remove_end(){
-    if(itsEmpty()){
-        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
-        cout << "-                  O DEQUE está vazio                     -" << endl;
-        cout << "-----------------------------------------------------------" << endl;
-        return -99999;
-    }else{
         int aux = vector[end];
         end = (end - 1 + capacity) % capacity; // Faz o end virar o indice anterior ao indice final
         size--;
         return aux;
-    }
 }
 
 int deque::head(){
-    if(itsEmpty()){
-        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
-        cout << "-                  O DEQUE está vazio                     -" << endl;
-        cout << "-----------------------------------------------------------" << endl;
-        return -99999;
-    }else{
         return vector[start];
-    }
 }
 
 int deque::tail(){
-    if(itsEmpty()){
-        cout << "--------------------- DEQUE ESTÁTICO ----------------------" << endl;
-        cout << "-                  O DEQUE está vazio                     -" << endl;
-        cout << "-----------------------------------------------------------" << endl;
-        return -99999;
-    }else{
         return vector[end];
-    }
 }
 
 bool deque::itsEmpty(){

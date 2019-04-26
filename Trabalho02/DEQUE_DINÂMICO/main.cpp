@@ -67,34 +67,58 @@ int main(){
                     break;
                     case 3:
                     {
-                        int rem_start = d.remove_ini();
-                        cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
-                        cout << "-           O valor removido foi: "<< rem_start << "             -" << endl;
-                        cout << "-----------------------------------------------------------" << endl;
+                        if(d.itsEmpty()){
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-                  O DEQUE está vazio!                    -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }else{
+                            int rem_start = d.remove_ini();
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-           O valor removido foi: "<< rem_start << "             -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }
                     }
                     break;
                     case 4:
                     {
-                        int rem_fim = d.remove_end();
-                        cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
-                        cout << "-           O valor removido foi: "<< rem_fim << "             -" << endl;
-                        cout << "-----------------------------------------------------------" << endl;
+                        if(d.itsEmpty()){
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-                  O DEQUE está vazio!                    -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }else{
+                            int rem_fim = d.remove_end();
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-           O valor removido foi: "<< rem_fim << "             -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }
                     }
                     break;
                     case 5:
                     {
-                        int head = d._head();
-                        cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
-                        cout << "-             O valor buscado é: "<< head << "              -" << endl;
-                        cout << "-----------------------------------------------------------" << endl;
+                        if(d.itsEmpty()){
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-                  O DEQUE está vazio!                    -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }else{
+                            int head = d._head();
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-             O valor buscado é: "<< head << "              -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }
                     }
                     break;
                     case 6:
                     {
-                        int tail = d._tail();
-                        cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
-                        cout << "-             O valor buscado é: "<< tail << "              -" << endl;
-                        cout << "-----------------------------------------------------------" << endl;
+                        if(d.itsEmpty()){
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-                  O DEQUE está vazio!                    -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }else{
+                            int tail = d._tail();
+                            cout << "--------------------- DEQUE DINÂMICO ----------------------" << endl;
+                            cout << "-             O valor buscado é: "<< tail << "              -" << endl;
+                            cout << "-----------------------------------------------------------" << endl;
+                        }
                     }
                     break;
                     case 7:
