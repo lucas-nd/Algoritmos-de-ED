@@ -1,1 +1,0 @@
-struct No * aux = c->prox;
