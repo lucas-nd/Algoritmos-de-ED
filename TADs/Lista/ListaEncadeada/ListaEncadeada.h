@@ -24,6 +24,7 @@ class listaEncadeada{
         void concatenar(listaEncadeada lista2);
         void removerNum(int n);
         void removerAll(int dado);
+        int ultimo();
 };
 
 #endif

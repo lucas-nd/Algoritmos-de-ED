@@ -23,4 +23,8 @@ int main(){
     lista.concatenar(lista2);
     lista.remover(3);
     lista.imprimir();
+
+    cout << endl;
+
+    cout << lista.ultimo();
 }

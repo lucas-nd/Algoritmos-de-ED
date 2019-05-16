@@ -133,3 +133,11 @@ void listaEncadeada::removerAll(int dado){
         c = c->prox;
     }
 }
+
+int listaEncadeada::ultimo(){
+    for(struct No * i = head; i != NULL; i = i->prox){
+        if(i->prox == NULL){
+            return i->valor;
+        }
+    }
+}
