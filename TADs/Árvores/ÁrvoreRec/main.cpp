@@ -12,8 +12,13 @@ int main(){
     struct noArv * n1 = arv_Cria(20, n3, criaVazia());
     struct noArv * raiz = arv_Cria(10, n1, n2);
 
+    struct noArv * raiz2 = espelho(raiz);
+
     //cout << arv_numero_nos(raiz) << " " << arv_altura(raiz) << " " << arv_numero_folhas(n2) << endl;
-    raiz = libera_folhas(raiz, 70);
 
     arv_imprime(raiz);
+    cout << endl;
+    arv_imprime(raiz2);
+    cout << endl;
+    cout << eh_avl(raiz);
 }

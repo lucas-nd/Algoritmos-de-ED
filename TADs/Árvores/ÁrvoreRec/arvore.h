@@ -17,5 +17,10 @@ int arv_numero_nos(struct noArv * no);
 int arv_altura(struct noArv * no);
 int arv_numero_folhas(struct noArv * no);
 noArv * libera_folhas(struct noArv * no, int chave);
+noArv * espelho(struct noArv * no);
+int arv_maior(struct noArv * no);
+int eh_completa(struct noArv * no);
+bool eh_avl(struct noArv * no);
+int num_nos_arv_it(struct noArv * no);
 
 #endif
