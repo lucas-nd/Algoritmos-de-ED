@@ -1,9 +1,17 @@
-/**
- * Implementacao da Pilha usando lista encadeada
- */
+/*
+    Nome: Lucas do Nascimento Diniz
+    Matrícula: 418184
+    GitHub: https://github.com/LNascimentoD/Algoritmos-de-ED/commits/master
+        **Os códigos estão todos no GitHub, caso o professor queira avaliar outros aspectos**
+*/
+
 #include <iostream>
 #include "Pilha.h"
 using namespace std;
+
+/**
+ * Implementacao da Pilha usando lista encadeada
+ */
 
 Pilha::Pilha() {
     _top = NULL;
